@@ -85,25 +85,93 @@
 
 // reverse('Hi my name is Andrei')
 
-//SORTING ARRAYS
+// //SORTING ARRAYS
 
-const array1 = [0, 3, 4, 31]
-const array2 = [4, 6, 30]
+// const array1 = [0, 3, 4, 31]
+// const array2 = [4, 6, 30]
 
-const mergeSortedArrays = (arr1, arr2) => {
-  const merged = []
-  const arr1Item = arr1[0];
-  const arr2Item = arr2[0];
+// const mergeSortedArrays = (arr1, arr2) => {
+//   const merged = []
+//   const arr1Item = arr1[0];
+//   const arr2Item = arr2[0];
 
-  for(i = 0; i < arr1.length + arr2.length; i + 2) {
-    merged[i] = arr1Item > arr2Item ? arr2Item : arr1Item
-    merged[i + 1] = arr1Item < arr2Item ? arr2Item : arr1Item
+//   for(i = 0; i < arr1.length + arr2.length; i + 2) {
+//     merged[i] = arr1Item > arr2Item ? arr2Item : arr1Item
+//     merged[i + 1] = arr1Item < arr2Item ? arr2Item : arr1Item
     
-  }
+//   }
 
 
 
-  return merged
+//   return merged
+// }
+
+// mergeSortedArrays(array1, array2)
+
+//HASH TABLE
+
+// class HashTable {
+//   constructor(size){
+//     this.data = new Array(size);
+//   }
+
+//   _hash(key) {
+//     let hash = 0;
+//     for (let i =0; i < key.length; i++){
+//         hash = (hash + key.charCodeAt(i) * i) % this.data.length
+//     }
+//     return hash;
+//   }
+//   set (key, value) {
+//     const hashedIndex = this._hash(key)
+//     if(!this.data[hashedIndex]) {
+//       this.data[hashedIndex] = []
+//     }
+//     this.data[hashedIndex].push([key, value])
+//     console.log(this.data)
+
+//   }
+//   get(key) {
+//     let address = this._hash(key)
+//     const currentBucket = this.data[address]
+//     if(currentBucket) return console.log( currentBucket.find(el => el[0] === key) )
+//     console.log(undefined)
+//   }
+//   keys() {
+//     const keysArr = []
+//     this.data.forEach(el => {
+//       if(el) keysArr.push(el[0][0])
+//     })
+
+//     console.log(keysArr)
+//   }
+// }
+
+// const myHashTable = new HashTable(50);
+
+// myHashTable.set('grapes', 10000)
+// myHashTable.get('grapes')
+// myHashTable.set('oranges', 765)
+// myHashTable.set('apples', 59)
+// myHashTable.get('apples')
+// myHashTable.keys()
+
+
+//[2, 5, 1, 2, 3, 5, 1, 2, 4]
+//[2, 1, 1, 2, 3, 5, 1, 2, 4]
+//[2, 3, 4, 5]
+
+const findFirstRecurring = array => {
+  const prev = new Set()
+  if(!array) console.log(undefined)
+
+  for (let i = 0; i < array.length; i++) {
+    if(prev.has(array[i])) {
+      value = array[i]
+      return console.log(array[i])
+    }
+    prev.add(array[i])
+  };
+  console.log(undefined)
 }
-
-mergeSortedArrays(array1, array2)
+findFirstRecurring();
