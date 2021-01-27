@@ -161,17 +161,229 @@
 //[2, 1, 1, 2, 3, 5, 1, 2, 4]
 //[2, 3, 4, 5]
 
-const findFirstRecurring = array => {
-  const prev = new Set()
-  if(!array) console.log(undefined)
+// const findFirstRecurring = array => {
+//   const prev = new Set()
+//   if(!array) console.log(undefined)
 
-  for (let i = 0; i < array.length; i++) {
-    if(prev.has(array[i])) {
-      value = array[i]
-      return console.log(array[i])
+//   for (let i = 0; i < array.length; i++) {
+//     if(prev.has(array[i])) {
+//       value = array[i]
+//       return console.log(array[i])
+//     }
+//     prev.add(array[i])
+//   };
+//   console.log(undefined)
+// }
+// findFirstRecurring();
+
+//LINKED LISTS
+// Create the below linked list:
+// myLinkedList = {
+//   head: {
+//     value: 10
+//     next: {
+//       value: 5
+//       next: {
+//         value: 16
+//         next: null
+//       }
+//     }
+//   }
+// };
+// class Node  {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null
+//   }
+// }
+// class LinkedList {
+//   constructor(value) {
+//     this.head = {
+//       value: value,
+//       next: null
+//     };
+//     this.tail = this.head;
+//     this.length = 1;
+//   }
+//   traverseTo(index) {
+//     let counter = 0;
+//     let currNode = this.head
+//     while(counter !== index) {
+//       currNode = currNode.next;
+//       counter++
+//     }
+//     return currNode 
+//   }
+//   append(value) {
+//     const node = new Node(value)
+//     this.tail.next = node
+//     this.tail = node
+//     this.length++
+    
+//   }
+//   prepend(value) {
+//     const node = new Node(value)
+//     node.next = this.head
+//     this.head = node
+//     this.length++
+//   }
+//   insert(index, value) {
+//     const node = new Node(value)
+//     if(index >= this.length) {
+//       return this.append(value)
+//     }
+//     const leader = this.traverseTo(index - 1) 
+//     const holdingPointer = leader.next
+//     leader.next = node
+//     node.next = holdingPointer
+//     this.length++
+
+//   }
+//   remove(index) {
+//     if(index >= this.length) return undefined;
+//     const leader = this.traverseTo(index - 1)
+//     const node = leader.next.next
+
+//     leader.next = node
+//     this.length--
+//   }
+//   printList() {
+//     const array = []
+//     let currNode = this.head;
+//     while(currNode !== null) {
+//       array.push(currNode.value);
+//       currNode = currNode.next
+//     }
+//     console.log(array)
+//     return
+//   }
+
+// }
+
+// let myLinkedList = new LinkedList(10);
+// myLinkedList.append(5);
+// myLinkedList.append(16);
+// myLinkedList.prepend(46);
+// myLinkedList.remove(2);
+// myLinkedList.remove(2);
+
+// myLinkedList.printList()
+
+// add a method reverse() to the linked list that reverses the entire list of nodes
+
+class LinkedList {
+  constructor(value) {
+      this.head = {
+          value: value,
+          next: null
+      };
+      this.tail = this.head;
+      this.length = 1;
+  }
+  append(value) {
+    const newNode = {
+      value: value,
+      next: null
     }
-    prev.add(array[i])
-  };
-  console.log(undefined)
+    console.log(newNode)
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return this;
+  }
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: null
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+  printList() {
+    const array = [];
+    let currentNode = this.head;
+    while(currentNode !== null){
+        array.push(currentNode.value)
+        currentNode = currentNode.next
+    }
+    return array;
+  }
+  insert(index, value){
+    //Check for proper parameters;
+    if(index >= this.length) {
+      console.log('yes')
+      return this.append(value);
+    }
+    
+    const newNode = {
+      value: value,
+      next: null
+    }
+    const leader = this.traverseToIndex(index-1);
+    const holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
+    this.length++;
+    return this.printList();
+  }
+  traverseToIndex(index) {
+    //Check parameters
+    let counter = 0;
+    let currentNode = this.head;
+    while(counter !== index){
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+  remove(index) {
+    // Check Parameters      
+    const leader = this.traverseToIndex(index-1);
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    this.length--;
+    return this.printList();
+  }
+  reverse() {
+      // let currNode = this.head;
+      // let forward = null;
+      // let node = currNode
+      // let prevNode
+      // while(forward.next !== null) {
+      //   currNode = currNode.next
+      //   node.next = forward
+      //   forward = currNode
+      //   prevNode = forward.next//
+      // }
+      if(!this.head.next) {
+        return this.head
+      }
+      let first = this.head;
+      let second = first.next;
+      while(second) {
+        const temp = second.next
+        second.next = first
+        first = second;
+        second = temp;
+      }
+      
+      
+    return this.printList();
+  }
 }
-findFirstRecurring();
+
+let myLinkedList = new LinkedList(10);
+myLinkedList.append(5)
+myLinkedList.append(16)
+myLinkedList.prepend(1)
+myLinkedList.printList()
+myLinkedList.insert(2, 99)
+myLinkedList.insert(20, 88)
+myLinkedList.printList()
+myLinkedList.remove(2)
+myLinkedList.reverse()
+
+
+
