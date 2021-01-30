@@ -453,61 +453,52 @@
 
 //QUEUES
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
 
-class Queue {
-  constructor(){
-    this.first = null;
-    this.last = null;
-    this.length = 0;
-  }
-  peek() {
-    console.log(this.first)
-    return this.first
-  }
-  enqueue(value){
-    const node = new Node(value)
-    if(this.length === 0) {
-      this.first = node;
-      this.last = node;
-    }
-    this.last.next = node;
-    this.last = node;
-    this.length++
-    console.log(this)
-    return this;
-  }
-  dequeue(){
-    if(this.length === 0) return null;
-    this.first = this.first.next;
-    this.length--
-    console.log(this)
-    return this;
-  }
-  //isEmpty;
-}
+// class Queue {
+//   constructor(){
+//     this.first = null;
+//     this.last = null;
+//     this.length = 0;
+//   }
+//   peek() {
+//     console.log(this.first)
+//     return this.first
+//   }
+//   enqueue(value){
+//     const node = new Node(value)
+//     if(this.length === 0) {
+//       this.first = node;
+//       this.last = node;
+//     }
+//     this.last.next = node;
+//     this.last = node;
+//     this.length++
+//     console.log(this)
+//     return this;
+//   }
+//   dequeue(){
+//     if(this.length === 0) return null;
+//     this.first = this.first.next;
+//     this.length--
+//     console.log(this)
+//     return this;
+//   }
+//   //isEmpty;
+// }
 
-const myQueue = new Queue();
-myQueue.enqueue('Joy'),
-myQueue.enqueue('Matt')
-myQueue.enqueue('Pavel')
-myQueue.enqueue('Samir')
-myQueue.peek()
-myQueue.dequeue()
-myQueue.peek()
-
-
-
-//Joy
-//Matt
-//Pavel
-//Samir
-
-
+// const myQueue = new Queue();
+// myQueue.enqueue('Joy'),
+// myQueue.enqueue('Matt')
+// myQueue.enqueue('Pavel')
+// myQueue.enqueue('Samir')
+// myQueue.peek()
+// myQueue.dequeue()
+// myQueue.peek()
 
 
