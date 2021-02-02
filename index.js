@@ -502,3 +502,86 @@
 // myQueue.peek()
 
 
+class Node {
+  constructor(value){
+    this.left = null;
+    this.right = null;
+    this.value = value;
+  }
+}
+
+class BinarySearchTree {
+  constructor(){
+    this.root = null;
+  }
+  insert(value){
+    //check for value
+    if(!value) { 
+      return null
+    }
+
+    const node = new Node(value)
+    //check that BST isn't empty
+    if(this.root === null) {
+      return this.root = node
+    }
+
+    let currNode = this.root;
+
+    while(true) {
+      if(currNode.value > value) {
+        if(!currNode.left) {
+          currNode.left = node
+          return this
+        }
+        currNode = currNode.left
+      } else if (currNode.value < value) {
+        if(!currNode.right) {
+          currNode.right = node
+          return this
+        }
+        currNode = currNode.right
+      }
+    }
+  }
+
+  lookup(value){
+    //check that the tree isn't empty
+    if(!this.root) return null
+
+    let currNode = this.root;
+    
+    while (currNode) {
+      if(currNode.value === value) {
+        return currNode
+      } else if(currNode.value > value) {
+        currNode = currNode.left
+      } else if (currNode.value < value) {
+        currNode = currNode.right
+      }
+    }
+    return null
+  }
+  // remove
+}
+
+const tree = new BinarySearchTree();
+tree.insert(9)
+tree.insert(4)
+tree.insert(6)
+tree.insert(20)
+tree.insert(170)
+tree.insert(15)
+tree.insert(1)
+JSON.stringify(traverse(tree.root))
+
+//     9
+//  4     20
+//1  6  15  170
+
+function traverse(node) {
+  const tree = { value: node.value };
+  tree.left = node.left === null ? null : traverse(node.left);
+  tree.right = node.right === null ? null : traverse(node.right);
+  return tree;
+}
