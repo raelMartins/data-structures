@@ -637,45 +637,63 @@
 // One should use recursive, the other should just use a for loop
 
 
-function findFactorialRecursive(number) {
-  if(number === 1) {
-    return 1
-  }
-    return number * findFactorialRecursive(number - 1)
-}
+// function findFactorialRecursive(number) {
+//   if(number === 1) {
+//     return 1
+//   }
+//     return number * findFactorialRecursive(number - 1)
+// }
 
-function findFactorialIterative(number) {
-  let answer = number;
-  for(let i = 2; i < number; i++) {
-    answer = answer * i
-  }
-  return answer;
-}
+// function findFactorialIterative(number) {
+//   let answer = number;
+//   for(let i = 2; i < number; i++) {
+//     answer = answer * i
+//   }
+//   return answer;
+// }
 
-findFactorialIterative(7)
+// findFactorialIterative(7)
 
-findFactorialRecursive(7)
+// findFactorialRecursive(7)
 
-// Given a number N return the index value of the Fibonacci sequence, where the sequence is:
+// // Given a number N return the index value of the Fibonacci sequence, where the sequence is:
 
-// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 ...
-// the pattern of the sequence is that each value is the sum of the 2 previous values, that means that for N=5 → 2+3
+// // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 ...
+// // the pattern of the sequence is that each value is the sum of the 2 previous values, that means that for N=5 → 2+3
 
-//For example: fibonacciRecursive(6) should return 8
+// //For example: fibonacciRecursive(6) should return 8
 
-function fibonacciIterative(n){
-  const array = [0, 1]
-  for(let i = 2; i <= n; i++) {
-    array[i] = array[i-1] + array[i - 2]
-  }
-  return array[n]
-}
-fibonacciIterative(6);
+// function fibonacciIterative(n){
+//   const array = [0, 1]
+//   for(let i = 2; i <= n; i++) {
+//     array[i] = array[i-1] + array[i - 2]
+//   }
+//   return array[n]
+// }
+// fibonacciIterative(6);
 
-function fibonacciRecursive(n) {
-  if(n < 2) return n
-  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2)
-}
+// function fibonacciRecursive(n) {
+//   if(n < 2) return n
+//   return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2)
+// }
 
-fibonacciRecursive(6)
+// fibonacciRecursive(6)
+// const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+// function bubbleSort(array) {
+//   const length = array.length;
+//   for (let i = 0; i < length; i++) {
+//     for (let j = 0; j < length; j++) { 
+//       if(array[j] > array[j+1]) {
+//         //Swap the numbers
+//         let temp = array[j]
+//         array[j] = array[j+1];
+//         array[j+1] = temp;
+//       }
+//     }        
+//   }
+// }
+
+// bubbleSort(numbers);
+// console.log(numbers);
 
