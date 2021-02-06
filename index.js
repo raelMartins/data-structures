@@ -502,133 +502,180 @@
 // myQueue.peek()
 
 
-class Node {
-  constructor(value){
-    this.left = null;
-    this.right = null;
-    this.value = value;
+// class Node {
+//   constructor(value){
+//     this.left = null;
+//     this.right = null;
+//     this.value = value;
+//   }
+// }
+
+// class BinarySearchTree {
+//   constructor(){
+//     this.root = null;
+//   }
+//   insert(value){
+//     //check for value
+//     if(!value) { 
+//       return null
+//     }
+
+//     const node = new Node(value)
+//     //check that BST isn't empty
+//     if(this.root === null) {
+//       return this.root = node
+//     }
+
+//     let currNode = this.root;
+
+//     while(true) {
+//       if(currNode.value > value) {
+//         if(!currNode.left) {
+//           currNode.left = node
+//           return this
+//         }
+//         currNode = currNode.left
+//       } else if (currNode.value < value) {
+//         if(!currNode.right) {
+//           currNode.right = node
+//           return this
+//         }
+//         currNode = currNode.right
+//       }
+//     }
+//   }
+
+//   lookup(value){
+//     //check that the tree isn't empty
+//     if(!this.root) return null
+
+//     let currNode = this.root;
+
+//     while (currNode) {
+//       if(currNode.value === value) {
+//         return currNode
+//       } else if(currNode.value > value) {
+//         currNode = currNode.left
+//       } else if (currNode.value < value) {
+//         currNode = currNode.right
+//       }
+//     }
+//     return null
+//   }
+//   // remove
+// }
+
+// const tree = new BinarySearchTree();
+// tree.insert(9)
+// tree.insert(4)
+// tree.insert(6)
+// tree.insert(20)
+// tree.insert(170)
+// tree.insert(15)
+// tree.insert(1)
+// JSON.stringify(traverse(tree.root))
+
+// //     9
+// //  4     20
+// //1  6  15  170
+
+// function traverse(node) {
+//   const tree = { value: node.value };
+//   tree.left = node.left === null ? null : traverse(node.left);
+//   tree.right = node.right === null ? null : traverse(node.right);
+//   return tree;
+// }
+
+// class Graph { 
+//   constructor() { 
+//     this.numberOfNodes = 0;
+//     this.adjacentList = {
+//     }; 
+//   } 
+//   addVertex(node)  {
+//     this.adjacentList[node] = []
+//     this.numberOfNodes++
+//   } 
+//   addEdge(node1, node2) { 
+//     this.adjacentList[node1].push(node2)
+//     this.adjacentList[node2].push(node1)
+//   } 
+//   showConnections() { 
+//     const allNodes = Object.keys(this.adjacentList); 
+//     for (let node of allNodes) { 
+//       let nodeConnections = this.adjacentList[node]; 
+//       let connections = ""; 
+//       let vertex;
+//       for (vertex of nodeConnections) {
+//         connections += vertex + " ";
+//       } 
+//       console.log(node + "-->" + connections); 
+//     } 
+// } 
+// } 
+
+// const myGraph = new Graph();
+// myGraph.addVertex('0');
+// myGraph.addVertex('1');
+// myGraph.addVertex('2');
+// myGraph.addVertex('3');
+// myGraph.addVertex('4');
+// myGraph.addVertex('5');
+// myGraph.addVertex('6');
+// myGraph.addEdge('3', '1'); 
+// myGraph.addEdge('3', '4'); 
+// myGraph.addEdge('4', '2'); 
+// myGraph.addEdge('4', '5'); 
+// myGraph.addEdge('1', '2'); 
+// myGraph.addEdge('1', '0'); 
+// myGraph.addEdge('0', '2'); 
+// myGraph.addEdge('6', '5');
+
+// myGraph.showConnections();
+
+// Write two functions that finds the factorial of any number.
+// One should use recursive, the other should just use a for loop
+
+
+function findFactorialRecursive(number) {
+  if(number === 1) {
+    return 1
   }
+    return number * findFactorialRecursive(number - 1)
 }
 
-class BinarySearchTree {
-  constructor(){
-    this.root = null;
+function findFactorialIterative(number) {
+  let answer = number;
+  for(let i = 2; i < number; i++) {
+    answer = answer * i
   }
-  insert(value){
-    //check for value
-    if(!value) { 
-      return null
-    }
-
-    const node = new Node(value)
-    //check that BST isn't empty
-    if(this.root === null) {
-      return this.root = node
-    }
-
-    let currNode = this.root;
-
-    while(true) {
-      if(currNode.value > value) {
-        if(!currNode.left) {
-          currNode.left = node
-          return this
-        }
-        currNode = currNode.left
-      } else if (currNode.value < value) {
-        if(!currNode.right) {
-          currNode.right = node
-          return this
-        }
-        currNode = currNode.right
-      }
-    }
-  }
-
-  lookup(value){
-    //check that the tree isn't empty
-    if(!this.root) return null
-
-    let currNode = this.root;
-
-    while (currNode) {
-      if(currNode.value === value) {
-        return currNode
-      } else if(currNode.value > value) {
-        currNode = currNode.left
-      } else if (currNode.value < value) {
-        currNode = currNode.right
-      }
-    }
-    return null
-  }
-  // remove
+  return answer;
 }
 
-const tree = new BinarySearchTree();
-tree.insert(9)
-tree.insert(4)
-tree.insert(6)
-tree.insert(20)
-tree.insert(170)
-tree.insert(15)
-tree.insert(1)
-JSON.stringify(traverse(tree.root))
+findFactorialIterative(7)
 
-//     9
-//  4     20
-//1  6  15  170
+findFactorialRecursive(7)
 
-function traverse(node) {
-  const tree = { value: node.value };
-  tree.left = node.left === null ? null : traverse(node.left);
-  tree.right = node.right === null ? null : traverse(node.right);
-  return tree;
+// Given a number N return the index value of the Fibonacci sequence, where the sequence is:
+
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 ...
+// the pattern of the sequence is that each value is the sum of the 2 previous values, that means that for N=5 → 2+3
+
+//For example: fibonacciRecursive(6) should return 8
+
+function fibonacciIterative(n){
+  const array = [0, 1]
+  for(let i = 2; i <= n; i++) {
+    array[i] = array[i-1] + array[i - 2]
+  }
+  return array[n]
+}
+fibonacciIterative(6);
+
+function fibonacciRecursive(n) {
+  if(n < 2) return n
+  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2)
 }
 
-class Graph { 
-  constructor() { 
-    this.numberOfNodes = 0;
-    this.adjacentList = {
-    }; 
-  } 
-  addVertex(node)  {
-    this.adjacentList[node] = []
-    this.numberOfNodes++
-  } 
-  addEdge(node1, node2) { 
-    this.adjacentList[node1].push(node2)
-    this.adjacentList[node2].push(node1)
-  } 
-  showConnections() { 
-    const allNodes = Object.keys(this.adjacentList); 
-    for (let node of allNodes) { 
-      let nodeConnections = this.adjacentList[node]; 
-      let connections = ""; 
-      let vertex;
-      for (vertex of nodeConnections) {
-        connections += vertex + " ";
-      } 
-      console.log(node + "-->" + connections); 
-    } 
-} 
-} 
+fibonacciRecursive(6)
 
-const myGraph = new Graph();
-myGraph.addVertex('0');
-myGraph.addVertex('1');
-myGraph.addVertex('2');
-myGraph.addVertex('3');
-myGraph.addVertex('4');
-myGraph.addVertex('5');
-myGraph.addVertex('6');
-myGraph.addEdge('3', '1'); 
-myGraph.addEdge('3', '4'); 
-myGraph.addEdge('4', '2'); 
-myGraph.addEdge('4', '5'); 
-myGraph.addEdge('1', '2'); 
-myGraph.addEdge('1', '0'); 
-myGraph.addEdge('0', '2'); 
-myGraph.addEdge('6', '5');
-
-myGraph.showConnections(); 
